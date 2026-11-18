@@ -120,9 +120,15 @@ curl --fail-with-body 'http://127.0.0.1:8000/analytics/daily?country=US&date_fro
 
 ```sh
 python -m pytest -q
+python -m pytest -q --cov --cov-report=term-missing --cov-report=html
 ruff check .
 ruff format --check .
 ```
+
+Each API test uses an isolated SQLite database. The coverage command checks an
+85% minimum for combined line and branch coverage and writes the HTML report to
+`htmlcov/index.html`. GitHub Actions runs these checks on Python 3.12 and uploads
+the HTML report.
 
 ## Future improvements
 
