@@ -20,6 +20,7 @@ dependencies = [
 dev = [
     "httpx>=0.28,<1",
     "pytest>=8.3,<10",
+    "pytest-cov>=6,<8",
     "ruff>=0.11,<1",
 ]
 
@@ -28,6 +29,15 @@ include = ["orderpulse*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "--strict-config --strict-markers"
+
+[tool.coverage.run]
+branch = true
+source = ["orderpulse"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
 
 [tool.ruff]
 target-version = "py312"
